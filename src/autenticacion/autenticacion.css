@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+  background-color: deepskyblue;
+  background-image: url("home-bg-2.png");
+  height: 900px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  flex-grow: 1;
+  color: white;
+}
+
+.App-logo {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  height: 10vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: white;
+}
+
+main {
+  width: 'auto';
+  display: 'block';
+  margin-left: 8%;
+  margin-right: 8%;
+
+}
+
+form {
+  width: '100%';
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
