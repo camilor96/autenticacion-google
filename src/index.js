@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import './index.css';
-import App from './autenticacion/autenticacion.js';
+import Autenticacion from './autenticacion/autenticacion.js';
 import * as serviceWorker from './serviceWorker';
 
 firebase.initializeApp({
@@ -14,6 +14,6 @@ firebase.initializeApp({
     messagingSenderId: "767973470590" 
 });
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Autenticacion />, document.getElementById('root'));
 
 serviceWorker.unregister();

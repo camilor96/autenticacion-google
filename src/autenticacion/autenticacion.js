@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+//import StyledFirebaseAuth from 'react-firebaseui/StyleFirebaseAuth';
 import './autenticacion.css';
 import logo from './logo.png';
 import Icon from '@material-ui/core/Icon';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -20,25 +20,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import { userInfo } from 'os';
 
-const theme = createMuiTheme({
-  overrides: {
-    // Name of the component ⚛️ / style sheet
-    MuiButton: {
-      // Name of the rule
-      root: {
-        // Some CSS
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        borderRadius: 3,
-        border: 0,
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      },
-    },
-  },
-  typography: { useNextVariants: true },
-});
 
 class App extends Component {
   constructor(){
@@ -52,6 +33,28 @@ class App extends Component {
   componentWillMount(){
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ user });
+    });
+  }
+
+  handleAuthf(){
+    const provider = new firebase.auth.FacebookAuthProvider();
+    
+    firebase.auth().signInWithPopup(provider)
+    .then(function(result) {
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
     });
   }
 
@@ -138,7 +141,7 @@ class App extends Component {
           </main>
           <br></br>
           <Grid item xs={6} sm={3} >
-            <Button style={styles.facebook} variant="contained" color="primary" onClick={this.handleAuth}><i style={{paddingRight:10}} class="fab fa-facebook-square"></i> Acceder</Button>
+            <Button style={styles.facebook} variant="contained" color="primary" onClick={this.handleAuthf}><i style={{paddingRight:10}} class="fab fa-facebook-square"></i> Acceder</Button>
           </Grid>
           <Grid item xs={6} sm={3} >
             <Button style={styles.google} variant="contained" color="secondary" onClick={this.handleAuth}><i style={{paddingRight:10}} class="fab fa-google-plus-g"></i> Acceder</Button>
