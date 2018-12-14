@@ -124,7 +124,7 @@ class App extends Component {
                   variant="contained"
                   className="acceder1"
                 >
-                  Sign in
+                  Acceder
                 </Button>
                 <Grid item xs={12}>
                   <br></br>
